@@ -1,5 +1,6 @@
 package com.amalitech.ecommerce.product;
 
+import com.amalitech.ecommerce.exceptionHandlers.ProductPurchaseException;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +20,7 @@ public class ProductController {
     }
 
     @PostMapping("/purchase")
-    public ResponseEntity<List<ProductPurhaseResponse>> purchaseProducts(@RequestBody List<ProductPurchaseRequest> request){
+    public ResponseEntity<List<ProductPurchaseResponse>> purchaseProducts(@RequestBody List<ProductPurchaseRequest> request) throws ProductPurchaseException {
         return ResponseEntity.ok(productService.purchaseProducts(request));
     }
 
