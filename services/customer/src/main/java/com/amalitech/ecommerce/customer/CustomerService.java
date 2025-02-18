@@ -25,8 +25,7 @@ public class CustomerService {
     public void updateCustomer(@Valid CustomerRequest customerRequest) {
         var customer = customerRepository.findById(customerRequest.id())
                 .orElseThrow(() -> new CustomerNotFoundException(
-                        format("Customer with id %s not found", customerRequest.id())
-                ));
+                        format("Customer with id %s not found", customerRequest.id())));
         mergeCustomer(customer, customerRequest);
         customerRepository.save(customer);
 
@@ -45,6 +44,13 @@ public class CustomerService {
         if (customerRequest.address() != null) {
             customer.setAddress(customerRequest.address());
         }
+    }
+
+    public CustomerResponse findById(String id) {
+        return customerRepository.findById(id)
+                .map(customerMapper::fromCustomer)
+                .orElseThrow(() -> new CustomerNotFoundException(
+                        String.format("No customer found with the provided ID: %s", id)));
     }
 
     public List<CustomerResponse> findAllCustomers() {

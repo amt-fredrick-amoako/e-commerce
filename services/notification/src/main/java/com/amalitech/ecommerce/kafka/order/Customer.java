@@ -1,4 +1,9 @@
 package com.amalitech.ecommerce.kafka.order;
 
-public record Customer() {
+public record Customer(
+        String id,
+        String firstname,
+        String lastname,
+        String email
+) {
 }

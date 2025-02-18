@@ -1,4 +1,7 @@
 package com.amalitech.ecommerce.dtos;
 
-public record OrderLineResponse() {
+public record OrderLineResponse(
+        Integer id,
+        double quantity
+) {
 }

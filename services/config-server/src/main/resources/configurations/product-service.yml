@@ -3,9 +3,9 @@ server:
 spring:
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5433/product
-    username: admin
-    password: admin1234
+    url: jdbc:postgresql://localhost:5432/product
+    username: sa
+    password: password
   jpa:
     hibernate:
       ddl-auto: validate
@@ -17,5 +17,3 @@ spring:
     baseline-description: "init"
     user: ${spring.datasource.username}
     password: ${spring.datasource.password}
-  profile:
-    active: dev

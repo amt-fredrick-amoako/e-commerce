@@ -1,4 +1,12 @@
 package com.amalitech.ecommerce.dtos;
 
-public class PurchaseResponse {
+import java.math.BigDecimal;
+
+public record PurchaseResponse(
+        Integer productId,
+        String name,
+        String description,
+        BigDecimal price,
+        double quantity
+) {
 }
